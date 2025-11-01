@@ -1,12 +1,26 @@
 <?xml version="1.0" ?>
-<robot
-  name="truck_urdf" xmlns:xacro="http://ros.org/wiki/xacro">
-   <link name="dummy_link"></link>
-  <joint name="dummy_joint" type="fixed">
-      <origin rpy="0 0 0" xyz="0 0 0" />
-      <parent link="dummy_link"/>
-      <child link="base_link"/>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="truck_urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:macro name="body_color">
+    <visual>
+    <material>
+        <ambient>0.8 0.558823529411765 0.1 1</ambient>
+        <diffuse>0.8 0.558823529411765 0.1 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+    </material>
+    </visual>
+</xacro:macro>
+
+  <link name="base_footprint"/>
+  <joint name="base_footprint_to_base_link" type="fixed">
+    <parent link="base_footprint"/>
+    <child  link="base_link"/>
+    <origin xyz="0 0 0" rpy="3.141592653589793 0 0"/>
   </joint>
+
   <link
     name="base_link">
     <inertial>
@@ -809,91 +823,4 @@
     <axis
       xyz="0 0 0" />
   </joint>
-   <ros2_control name="GazeboSystem" type="system">
- <hardware>
-     <plugin>gazebo_ros2_control/GazeboSystem</plugin>
- </hardware> 
-
- <joint name="joint_bl">
-     <command_interface name="velocity">
-         <param name="min">-1000.0</param>
-         <param name="max">1000.0</param>
-     </command_interface>
-     <state_interface name="position"/>
-     <state_interface name="velocity"/>
- </joint>
- <joint name="joint_br">
-     <command_interface name="velocity">
-         <param name="min">-1000.0</param>
-         <param name="max">1000.0</param>
-     </command_interface>
-     <state_interface name="position"/>
-     <state_interface name="velocity"/>
- </joint>
- 
- <joint name="wheel_fr_steer">
-     <command_interface name="position">
-         <param name="min">-3.14</param>
-         <param name="max">3.14</param>
-     </command_interface>
-     <state_interface name="position"/>
-     <state_interface name="velocity"/>
- </joint>
-
- <joint name="wheel_fl_steer">
-     <command_interface name="position">
-         <param name="min">-3.14</param>
-         <param name="max">3.14</param>
-     </command_interface>
-     <state_interface name="position"/>
-     <state_interface name="velocity"/>
- </joint>
-<gazebo>
-    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-        <parameters>$(find project1phase1)/config/control.yaml</parameters>
-    </plugin>
-</gazebo>
- </ros2_control>
-
- <!-- LiDAR sensor attached to base_link -->
-<gazebo reference="base_link">
-  <sensor name="lidar" type="ray">
-    <pose>0.15 0 0.1 0 0 0</pose>  <!-- TODO: ADJUST LIDAR POSE -->
-    <always_on>true</always_on>
-    <visualize>true</visualize>
-    <update_rate>10</update_rate>
-
-    <ray>
-      <scan>
-        <horizontal>
-          <samples>360</samples>
-          <resolution>1.0</resolution>
-          <min_angle>0.0</min_angle>
-          <max_angle>6.28319</max_angle> <!-- 360 deg -->
-        </horizontal>
-      </scan>
-
-      <range>
-        <min>0.12</min>
-        <max>3.5</max>
-        <resolution>0.015</resolution>
-      </range>
-
-      <noise>
-        <type>gaussian</type>
-        <mean>0.0</mean>
-        <stddev>0.01</stddev>
-      </noise>
-    </ray>
-
-    <plugin name="gazebo_ros_laser" filename="libgazebo_ros_ray_sensor.so">
-      <ros>
-        <remapping>~/out:=scan</remapping>
-      </ros>
-      <output_type>sensor_msgs/LaserScan</output_type>
-      <frame_name>base_link</frame_name>
-    </plugin>
-  </sensor>
-</gazebo>
-
 </robot>
