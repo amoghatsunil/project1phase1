@@ -189,10 +189,18 @@
     <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry>
       <mesh filename="package://project1phase1/meshes/trailer.STL"/></geometry></collision>
   </link>
-  <joint name="hitch" type="fixed">
-    <origin xyz="-0.254000000000682 -1.06680000000062 -0.20320000000001"
-            rpy="-3.14159265358979 0 -0.0250798506762473"/>
-    <parent link="base_link"/><child link="trailer"/>
+  <joint name="hitch" type="revolute">
+  <!-- keep your original pose -->
+  <origin xyz="-0.254000000000682 -1.06680000000062 -0.20320000000001"
+          rpy="-3.14159265358979 0 -0.0250798506762473"/>
+  <parent link="base_link"/>
+  <child  link="trailer"/>
+  <!-- yaw axis -->
+  <axis xyz="0 0 1"/>
+  <!-- turn limits (tweak as you like) -->
+  <limit lower="-1.2" upper="1.2" effort="500.0" velocity="2.0"/>
+  <!-- add some damping so it’s stable -->
+  <dynamics damping="5.0" friction="0.0"/>
   </joint>
 
   <!-- Trailer wheels: all free-rolling (continuous, axle along X) -->
@@ -289,10 +297,15 @@
     <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry>
       <mesh filename="package://project1phase1/meshes/back_trailer.STL"/></geometry></collision>
   </link>
-  <joint name="back_hitch" type="fixed">
-    <origin xyz="0 1.15526871138527 0" rpy="0 0 -0.0257409734881418"/>
-    <parent link="trailer"/><child link="back_trailer"/>
+  <joint name="back_hitch" type="revolute">
+  <origin xyz="0 1.15526871138527 0" rpy="0 0 -0.0257409734881418"/>
+  <parent link="trailer"/>
+  <child  link="back_trailer"/>
+  <axis xyz="0 0 1"/>
+  <limit lower="-1.2" upper="1.2" effort="500.0" velocity="2.0"/>
+  <dynamics damping="5.0" friction="0.0"/>
   </joint>
+
 
   <!-- Back trailer wheels: free-rolling -->
   <link name="wheel_bfl">
