@@ -22,7 +22,7 @@ def generate_launch_description():
     xacro_file = "truck_urdf.urdf.xacro"
     package_description = "project1phase1"
 
-    position = [0.0, 0.0, 1.5]     # x y z
+    position = [0.0, 0.0, 0.5]     # x y z //changed z to 0.5 for competition_world
     orientation = [3.14, 0.0, 0.0] # R P Y
     robot_base_name = "base_link"
     entity_name = f"{robot_base_name}-{random.random()}"
