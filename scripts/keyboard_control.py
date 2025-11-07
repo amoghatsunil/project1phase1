@@ -4,10 +4,10 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
 
-VEL_STEP = 1.0     # wheel speed step per keypress (e.g., rad/s)
-STEER_STEP = 0.05  # steering step per keypress (rad)
-MAX_VEL = 30.0     # clamp to your controller's safe range
-MAX_STEER = 0.6    # ~34 degrees; adjust to your joint limits
+VEL_STEP = 1.0     
+STEER_STEP = 0.05 
+MAX_VEL = 30.0     
+MAX_STEER = 0.6  
 
 def clamp(x, lo, hi): return max(lo, min(hi, x))
 
