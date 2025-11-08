@@ -69,7 +69,7 @@
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
         <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>3.2</mu><mu2>3.2</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <friction><ode><mu>2.0</mu><mu2>2.0</mu2><slip1>0.05</slip1><slip2>0.05</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -113,7 +113,7 @@
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
         <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>3.2</mu><mu2>3.2</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <friction><ode><mu>2.0</mu><mu2>2.0</mu2><slip1>0.05</slip1><slip2>0.05</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -139,7 +139,7 @@
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
         <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>7.2</mu><mu2>7.2</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <friction><ode><mu>3.0</mu><mu2>3.0</mu2><slip1>0.02</slip1><slip2>0.02</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -164,7 +164,7 @@
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
         <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>7.2</mu><mu2>7.2</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <friction><ode><mu>3.0</mu><mu2>3.0</mu2><slip1>0.02</slip1><slip2>0.02</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -192,15 +192,15 @@
   <joint name="hitch" type="revolute">
   <!-- keep your original pose -->
   <origin xyz="-0.254000000000682 -1.06680000000062 -0.20320000000001"
-          rpy="-3.14159265358979 0 -0.0250798506762473"/>
+          rpy="-3.14159265358979 0 0"/>
   <parent link="base_link"/>
   <child  link="trailer"/>
   <!-- yaw axis -->
   <axis xyz="0 0 1"/>
   <!-- turn limits (tweak as you like) -->
-  <limit lower="-1.2" upper="1.2" effort="500.0" velocity="2.0"/>
+  <limit lower="-1.5" upper="1.5" effort="500.0" velocity="3.0"/>
   <!-- add some damping so it’s stable -->
-  <dynamics damping="5.0" friction="0.0"/>
+  <dynamics damping="1.0" friction="0.0"/>
   </joint>
 
   <!-- Trailer wheels: all free-rolling (continuous, axle along X) -->
@@ -213,8 +213,8 @@
       <origin xyz="0 0 0" rpy="0 1.57079632679 0"/>
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
-        <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>1.0</mu><mu2>1.0</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <contact><ode><kp>5e5</kp><kd>5.0</kd><max_vel>0.5</max_vel><min_depth>0.001</min_depth></ode></contact>
+        <friction><ode><mu>0.8</mu><mu2>0.3</mu2><slip1>0.1</slip1><slip2>0.1</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -233,8 +233,8 @@
       <origin xyz="0 0 0" rpy="0 1.57079632679 0"/>
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
-        <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>1.0</mu><mu2>1.0</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <contact><ode><kp>5e5</kp><kd>5.0</kd><max_vel>0.5</max_vel><min_depth>0.001</min_depth></ode></contact>
+        <friction><ode><mu>0.8</mu><mu2>0.3</mu2><slip1>0.1</slip1><slip2>0.1</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -253,8 +253,8 @@
       <origin xyz="0 0 0" rpy="0 1.57079632679 0"/>
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
-        <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>1.0</mu><mu2>1.0</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <contact><ode><kp>5e5</kp><kd>5.0</kd><max_vel>0.5</max_vel><min_depth>0.001</min_depth></ode></contact>
+        <friction><ode><mu>0.8</mu><mu2>0.3</mu2><slip1>0.1</slip1><slip2>0.1</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -273,8 +273,8 @@
       <origin xyz="0 0 0" rpy="0 1.57079632679 0"/>
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>  
       <surface>
-        <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>1.0</mu><mu2>1.0</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <contact><ode><kp>5e5</kp><kd>5.0</kd><max_vel>0.5</max_vel><min_depth>0.001</min_depth></ode></contact>
+        <friction><ode><mu>0.8</mu><mu2>0.3</mu2><slip1>0.1</slip1><slip2>0.1</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -298,12 +298,12 @@
       <mesh filename="package://project1phase1/meshes/back_trailer.STL"/></geometry></collision>
   </link>
   <joint name="back_hitch" type="revolute">
-  <origin xyz="0 1.15526871138527 0" rpy="0 0 -0.0257409734881418"/>
+  <origin xyz="0 1.15526871138527 0" rpy="0 0 0"/>
   <parent link="trailer"/>
   <child  link="back_trailer"/>
   <axis xyz="0 0 1"/>
-  <limit lower="-1.2" upper="1.2" effort="500.0" velocity="2.0"/>
-  <dynamics damping="5.0" friction="0.0"/>
+  <limit lower="-1.5" upper="1.5" effort="500.0" velocity="3.0"/>
+  <dynamics damping="1.0" friction="0.0"/>
   </joint>
 
 
@@ -317,8 +317,8 @@
       <origin xyz="0 0 0" rpy="0 1.57079632679 0"/>
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
-        <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>1.0</mu><mu2>1.0</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <contact><ode><kp>5e5</kp><kd>5.0</kd><max_vel>0.5</max_vel><min_depth>0.001</min_depth></ode></contact>
+        <friction><ode><mu>0.8</mu><mu2>0.3</mu2><slip1>0.1</slip1><slip2>0.1</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -337,8 +337,8 @@
       <origin xyz="0 0 0" rpy="0 1.57079632679 0"/>
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
-        <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>1.0</mu><mu2>1.0</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <contact><ode><kp>5e5</kp><kd>5.0</kd><max_vel>0.5</max_vel><min_depth>0.001</min_depth></ode></contact>
+        <friction><ode><mu>0.8</mu><mu2>0.3</mu2><slip1>0.1</slip1><slip2>0.1</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -357,8 +357,8 @@
       <origin xyz="0 0 0" rpy="0 1.57079632679 0"/>
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
-        <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>1.0</mu><mu2>1.0</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <contact><ode><kp>5e5</kp><kd>5.0</kd><max_vel>0.5</max_vel><min_depth>0.001</min_depth></ode></contact>
+        <friction><ode><mu>0.8</mu><mu2>0.3</mu2><slip1>0.1</slip1><slip2>0.1</slip2></ode></friction>
       </surface>
     </collision>
   </link>
@@ -377,8 +377,8 @@
       <origin xyz="0 0 0" rpy="0 1.57079632679 0"/>
       <geometry><cylinder radius="0.17" length="0.06"/></geometry>
       <surface>
-        <contact><ode><kp>1e6</kp><kd>1.0</kd><max_vel>0.2</max_vel><min_depth>0.001</min_depth></ode></contact>
-        <friction><ode><mu>1.0</mu><mu2>1.0</mu2><slip1>0.01</slip1><slip2>0.0</slip2></ode></friction>
+        <contact><ode><kp>5e5</kp><kd>5.0</kd><max_vel>0.5</max_vel><min_depth>0.001</min_depth></ode></contact>
+        <friction><ode><mu>0.8</mu><mu2>0.3</mu2><slip1>0.1</slip1><slip2>0.1</slip2></ode></friction>
       </surface>
     </collision>
   </link>
