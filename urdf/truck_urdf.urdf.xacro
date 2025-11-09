@@ -402,14 +402,14 @@
     <geometry>
       <cylinder radius="0.03" length="0.06"/>
     </geometry>
-    <material><color rgba="0.1 0.1 0.1 1.0"/></material>
+    <material name="lidar_mat"><color rgba="0.1 0.1 0.1 1.0"/></material>
   </visual>
 </link>
 
 <!-- Mount joint (LiDAR sitting on top front of chassis) -->
 <joint name="lidar_mount" type="fixed">
   <!-- Shift slightly forward and upward -->
-  <origin xyz="0.25 0.0 0.45" rpy="0 0 0"/> 
+  <origin xyz="0 0.0 0.8" rpy="0 0 0"/> 
   <parent link="base_link"/>
   <child link="lidar_link"/>
 </joint>
@@ -418,7 +418,7 @@
 <gazebo reference="lidar_link">
   <sensor name="lidar" type="ray">
     <!-- Adjusted pose -->
-    <pose>0 0 0.03 0 1.5708 0</pose>
+    <pose>0 0 0 0 0 0</pose>
 
     <always_on>true</always_on>
     <visualize>true</visualize>
